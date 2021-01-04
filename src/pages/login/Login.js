@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
-import styles from "./login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { userSignIn } from "../../redux/auth/actionCreators";
 import { useHistory } from "react-router-dom";
+import { userSignIn } from "../../redux/auth/actionCreators";
 import { selectUserData, selectAuthError } from "../../redux/auth/selectors";
 import { Input, Button } from "../../components/inputs";
+import styles from "./login.module.scss";
 
 function Login() {
 	const [email, setEmail] = useState("");

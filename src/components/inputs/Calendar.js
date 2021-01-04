@@ -1,18 +1,16 @@
 import PropTypes from "prop-types";
-import WrapperBox from "./WrapperBox";
+import DatePicker from "react-datepicker";
 import styles from "./inputs.module.scss";
+import WrapperBox from "./WrapperBox";
 
-function Input(props) {
+function Calendar(props) {
 	const {
-		type = "text",
-		label,
-		value,
+		selectedDate,
 		handleChange,
 		id,
+		label,
 		hasError,
 		errorMessage,
-		autoComplete,
-		pattern = null,
 	} = props;
 
 	return (
@@ -22,29 +20,27 @@ function Input(props) {
 			hasError={hasError}
 			errorMessage={errorMessage}
 		>
-			<input
-				type={type}
-				id={id}
-				value={value}
+			<DatePicker
+				selected={selectedDate}
 				onChange={handleChange}
+				id={id}
+				showYearDropdown
+				scrollableYearDropdown
+				dateFormatCalendar="MMMM"
+				yearDropdownItemNumber={15}
 				className={styles.inputs__field}
-				autoComplete={autoComplete}
-				pattern={pattern}
 			/>
 		</WrapperBox>
 	);
 }
 
-Input.propTypes = {
-	type: PropTypes.string,
-	label: PropTypes.string,
-	value: PropTypes.string,
-	id: PropTypes.string,
+Calendar.propTypes = {
+	selectedDate: PropTypes.instanceOf(Date),
 	handleChange: PropTypes.func,
+	id: PropTypes.string,
+	label: PropTypes.string,
 	hasError: PropTypes.bool,
 	errorMessage: PropTypes.string,
-	autoComplete: PropTypes.string,
-	pattern: PropTypes.string,
 };
 
-export default Input;
+export default Calendar;

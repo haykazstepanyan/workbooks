@@ -50,8 +50,11 @@
 		outline: none;
 	}
 	&:disabled {
-		background: #f5f5f5;
-		color: #000;
 		cursor: not-allowed;
+		color: rgba(0, 0, 0, 0.26);
+		background-color: rgba(0, 0, 0, 0.12);
+	}
+	&_rightAlign {
+		text-align: right;
 	}
 }
