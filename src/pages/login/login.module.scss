@@ -1,0 +1,11 @@
+.login {
+	width: 350px;
+	margin: 250px auto 0;
+	&__form {
+		display: flex;
+		flex-direction: column;
+	}
+	&__fields {
+		margin-top: 20px !important;
+	}
+}

@@ -1,0 +1,57 @@
+.inputs {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-bottom: 15px;
+	&_errors {
+		span {
+			color: red;
+			font-style: italic;
+			font-size: 12px;
+			padding-left: 15px;
+		}
+		input {
+			border: 1px solid red;
+		}
+		label {
+			color: red;
+		}
+	}
+	&__labels {
+		padding: 0 0 3px 10px;
+		font-size: 12px;
+	}
+	&__field {
+		height: 37px;
+		padding-left: 15px;
+		border-radius: 5px;
+		border: 1px solid #8c9394;
+		width: -webkit-fill-available;
+		&:focus {
+			border-radius: 5px;
+			outline: none;
+			border: 1px solid #36b5ff;
+			& + label {
+				color: #36b5ff;
+			}
+		}
+	}
+}
+.buttons {
+	padding: 10px 25px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background: #3f50b5;
+	color: #fff;
+	&:hover {
+		background: #757ce8;
+	}
+	&:focus {
+		outline: none;
+	}
+	&:disabled {
+		background: #f5f5f5;
+		color: #000;
+		cursor: not-allowed;
+	}
+}
