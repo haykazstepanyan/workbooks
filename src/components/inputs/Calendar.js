@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
-import styles from "./inputs.module.scss";
 import WrapperBox from "./WrapperBox";
+import styles from "./inputs.module.scss";
 
 function Calendar(props) {
 	const {

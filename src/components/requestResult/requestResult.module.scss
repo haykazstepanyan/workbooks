@@ -2,16 +2,16 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 0 auto;
+	margin: 0 auto 15px;
 	svg {
 		width: 3em;
 		height: 3em;
 		margin-bottom: 15px;
 	}
 	&_success {
-		fill: #3eff55 !important;
+		color: #3eff55;
 	}
 	&_failed {
-		fill: red !important;
+		color: red;
 	}
 }

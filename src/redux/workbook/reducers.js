@@ -3,6 +3,7 @@ import * as actionTypes from "./actionTypes";
 const INITIAL_STATE = {
 	workbooks: null,
 	workbookStatus: "",
+	deleteStatus: "",
 };
 
 const workbookReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -31,6 +32,21 @@ const workbookReducer = (state = INITIAL_STATE, { type, payload }) => {
 			return {
 				...state,
 				workbookStatus: "",
+			};
+		case actionTypes.DELETE_WORKBOOK_SUCCESS:
+			return {
+				...state,
+				deleteStatus: "successful",
+			};
+		case actionTypes.DELETE_WORKBOOK_ERROR:
+			return {
+				...state,
+				deleteStatus: "failed",
+			};
+		case actionTypes.RESET_DELETE_STATUS:
+			return {
+				...state,
+				deleteStatus: "",
 			};
 		default:
 			return state;

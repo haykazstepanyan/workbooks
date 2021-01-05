@@ -13,4 +13,17 @@
 		border-top: 1px solid #000;
 		flex-direction: column;
 	}
+	&__content {
+		div {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+	&__deleteIcon {
+		color: red;
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
 }

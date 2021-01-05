@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { WorkbookForm } from "./";
 import Accordion from "../accordion";
 
-function AddNewWorkbook({ workbooks }) {
+function AddNewWorkbook({ workbooks, user }) {
 	const [accordionState, setAccordionState] = useState(false);
 
 	const closeAccordion = useCallback(() => {
@@ -21,7 +21,11 @@ function AddNewWorkbook({ workbooks }) {
 				changeHandler={handleExpand}
 				rowName="+ Add new workbook"
 			>
-				<WorkbookForm closeAccordion={closeAccordion} workbooks={workbooks} />
+				<WorkbookForm
+					closeAccordion={closeAccordion}
+					workbooks={workbooks}
+					user={user}
+				/>
 			</Accordion>
 		</div>
 	);
@@ -32,8 +36,9 @@ AddNewWorkbook.propTypes = {
 		birthDate: PropTypes.string,
 		email: PropTypes.string,
 		passport: PropTypes.string,
-		Workspaces: PropTypes.objectOf(PropTypes.string),
+		Workplaces: PropTypes.objectOf(PropTypes.string),
 	}),
+	user: PropTypes.objectOf(PropTypes.string),
 };
 
 export default AddNewWorkbook;

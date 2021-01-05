@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import Accordion from "../accordion";
-import WorkspaceForm from "./WorkspaceForm";
+import WorkplaceForm from "./WorkplaceForm";
 
-function AddNewWorkspace({ id, workspaces }) {
+function AddNewWorkplace({ id, workplaces }) {
 	const [accordionState, setAccordionState] = useState(false);
 
 	const closeAccordion = useCallback(() => {
@@ -18,20 +18,20 @@ function AddNewWorkspace({ id, workspaces }) {
 		<Accordion
 			isExpanded={accordionState}
 			changeHandler={handleExpand}
-			rowName="+ Add new workspace"
+			rowName="+ Add new workplace"
 		>
-			<WorkspaceForm
+			<WorkplaceForm
 				id={id}
 				closeAccordion={closeAccordion}
-				workspaces={workspaces}
+				workplaces={workplaces}
 			/>
 		</Accordion>
 	);
 }
 
-AddNewWorkspace.propTypes = {
+AddNewWorkplace.propTypes = {
 	id: PropTypes.string,
-	workspaces: PropTypes.objectOf(
+	workplaces: PropTypes.objectOf(
 		PropTypes.shape({
 			country: PropTypes.string,
 			company: PropTypes.string,
@@ -41,4 +41,4 @@ AddNewWorkspace.propTypes = {
 	),
 };
 
-export default AddNewWorkspace;
+export default AddNewWorkplace;

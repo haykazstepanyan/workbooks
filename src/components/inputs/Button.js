@@ -10,14 +10,20 @@ function Button(props) {
 		disabled,
 		isTransparent,
 		rightAlign,
+		centerAlign,
+		redColored,
+		defaultColored,
 	} = props;
 
 	const buttonClass = classnames(styles.buttons, {
 		[styles.buttons_transparent]: isTransparent,
+		[styles.buttons_red]: redColored,
+		[styles.buttons_default]: defaultColored,
 	});
 
 	const divClass = classnames({
 		[styles.buttons_rightAlign]: rightAlign,
+		[styles.buttons_centerAlign]: centerAlign,
 	});
 
 	return (
@@ -40,6 +46,10 @@ Button.propTypes = {
 	handleClick: PropTypes.func,
 	disabled: PropTypes.bool,
 	rightAlign: PropTypes.bool,
+	centerAlign: PropTypes.bool,
+	isTransparent: PropTypes.bool,
+	redColored: PropTypes.bool,
+	defaultColored: PropTypes.bool,
 };
 
 export default Button;

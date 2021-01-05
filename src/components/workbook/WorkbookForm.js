@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import RequestResult from "../requestResult";
 import { Input, Button, Calendar } from "../inputs";
 
-function WorkbookForm({ closeAccordion, workbooks }) {
+function WorkbookForm({ closeAccordion, workbooks, user }) {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [passport, setPassport] = useState("");
@@ -65,6 +65,9 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 			email: email.toLowerCase(),
 			birthDate: birthDate.toString(),
 		};
+		if (user.type === "user") {
+			workBookData.user_ID = user.id;
+		}
 		dispatch(setNewWorkbook(workBookData));
 		setTimeout(() => {
 			closeAccordion();
@@ -107,8 +110,16 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 	const isButtonDisabled =
 		firstName === "" || lastName === "" || passport === "" || email === "";
 
+	let workbookStatusText;
+
+	if (workbookStatus === "successful") {
+		workbookStatusText = "New workbook has been successfully created";
+	} else if (workbookStatus === "failed") {
+		workbookStatusText = "Something went wrong! Please try again later";
+	}
+
 	if (workbookStatus) {
-		return <RequestResult status={workbookStatus} name="workbook" />;
+		return <RequestResult status={workbookStatus} text={workbookStatusText} />;
 	} else {
 		return (
 			<form className="forms" onSubmit={handleFormSubmit}>
@@ -168,8 +179,9 @@ WorkbookForm.propTypes = {
 		birthDate: PropTypes.string,
 		email: PropTypes.string,
 		passport: PropTypes.string,
-		Workspaces: PropTypes.object,
+		Workplaces: PropTypes.object,
 	}),
+	user: PropTypes.objectOf(PropTypes.string),
 };
 
 export default WorkbookForm;

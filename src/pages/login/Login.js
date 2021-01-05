@@ -94,7 +94,12 @@ function Login() {
 							<p>{errors.others}</p>
 						</div>
 					)}
-					<Button type="submit" disabled={!email || !password} text="Sign in" />
+					<Button
+						type="submit"
+						disabled={!email || !password}
+						text="Sign in"
+						centerAlign
+					/>
 				</form>
 			</div>
 		);

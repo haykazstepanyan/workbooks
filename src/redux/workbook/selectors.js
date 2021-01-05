@@ -7,6 +7,11 @@ export const selectWorkbookStatus = createSelector(
 	(workbook) => workbook.workbookStatus
 );
 
+export const selectDeleteStatus = createSelector(
+	[selectWorkbook],
+	(workbook) => workbook.deleteStatus
+);
+
 export const selectWorkbooks = createSelector(
 	[selectWorkbook],
 	(workbook) => workbook.workbooks

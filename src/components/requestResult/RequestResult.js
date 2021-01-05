@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import Loader from "../loader";
-import styles from "./requestResult.styles.scss";
+import styles from "./requestResult.module.scss";
 
-function RequestResult({ status, name }) {
+function RequestResult({ status, text }) {
 	function renderResult() {
 		if (status === "pending") {
 			return <Loader />;
@@ -12,24 +12,24 @@ function RequestResult({ status, name }) {
 			return (
 				<>
 					<CheckCircleOutlineIcon className={styles.requestResult_success} />
-					<p>New {name} has been successfully added</p>
+					<p>{text}</p>
 				</>
 			);
 		} else if (status === "failed") {
 			return (
 				<>
 					<ErrorOutlineIcon className={styles.requestResult_failed} />
-					<p>Something went wrong. Please try again later</p>
+					<p>{text}</p>
 				</>
 			);
 		}
 	}
-	return <div className="request-result">{renderResult()}</div>;
+	return <div className={styles.requestResult}>{renderResult()}</div>;
 }
 
 RequestResult.propTypes = {
 	status: PropTypes.string,
-	name: PropTypes.string,
+	text: PropTypes.string,
 };
 
 export default RequestResult;

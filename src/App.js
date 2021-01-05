@@ -9,7 +9,13 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Suspense fallback={<Loader />}>
+				<Suspense
+					fallback={
+						<div className="page-center-loader">
+							<Loader />
+						</div>
+					}
+				>
 					<Route path="/" exact component={Workbook} />
 					<Route path="/login" component={Login} />
 				</Suspense>

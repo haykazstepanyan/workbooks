@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth/reducers";
 import workbookReducer from "./workbook/reducers";
-import workspaceReducer from "./workspace/reducers";
+import workplaceReducer from "./workplace/reducers";
 
 const rootReducer = combineReducers({
 	auth: authReducer,
 	workbook: workbookReducer,
-	workspace: workspaceReducer,
+	workplace: workplaceReducer,
 });
 
 export default rootReducer;

@@ -7,29 +7,7 @@
 		margin-top: 35px;
 	}
 }
-.new-workbook-result {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 0 auto;
-	svg {
-		width: 3em;
-		height: 3em;
-		margin-bottom: 15px;
-	}
-	&_success {
-		fill: #3eff55 !important;
-	}
-	&_failed {
-		fill: red !important;
-	}
-}
 .workbook {
 	padding: 0 10px;
 	margin-bottom: 10px;
-}
-.loaderBox {
-	display: flex;
-	justify-content: center;
-	margin-top: 30%;
 }

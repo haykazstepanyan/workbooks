@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import ReactFlagsSelect from "react-flags-select";
 import {
-	setNewWorkspace,
-	setNewWorkspaceStart,
-	resetWorkspaceStatus,
-} from "../../redux/workspace/actionCreators";
-import { selectWorkspaceStatus } from "../../redux/workspace/selectors";
+	setNewWorkplace,
+	setNewWorkplaceStart,
+	resetWorkplaceStatus,
+} from "../../redux/workplace/actionCreators";
+import { selectWorkplaceStatus } from "../../redux/workplace/selectors";
 import { Button, Calendar, Input } from "../inputs";
-import styles from "./workspaces.module.scss";
 import RequestResult from "../requestResult";
+import styles from "./workplaces.module.scss";
 
-function WorkspaceForm({ id, closeAccordion, workspaces }) {
+function WorkplaceForm({ id, closeAccordion, workplaces }) {
 	const [company, setCompany] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState();
@@ -21,7 +21,7 @@ function WorkspaceForm({ id, closeAccordion, workspaces }) {
 
 	const dispatch = useDispatch();
 
-	const workspaceStatus = useSelector(selectWorkspaceStatus);
+	const workplaceStatus = useSelector(selectWorkplaceStatus);
 
 	const handleCompany = useCallback((e) => {
 		setCompany(e.target.value);
@@ -43,48 +43,59 @@ function WorkspaceForm({ id, closeAccordion, workspaces }) {
 			setDateError("Start date is greater than end date");
 			return;
 		}
-		if (workspaces) {
-			let dateChecking = Object.values(workspaces).some((workspace) => {
+		if (workplaces) {
+			let dateChecking = Object.values(workplaces).some((workplace) => {
 				const workingTillNow =
-					!workspace.endDate &&
-					new Date(workspace.startDate) <= new Date(endDate);
+					(!workplace.endDate && !endDate) ||
+					(!workplace.endDate &&
+						new Date(workplace.startDate) <= new Date(endDate));
 				const worked =
-					workspace.endDate &&
-					(new Date(workspace.startDate) <=
+					workplace.endDate &&
+					(new Date(workplace.startDate) <=
 						new Date(startDate) <=
-						new Date(workspace.endDate) ||
+						new Date(workplace.endDate) ||
 						new Date(startDate) <=
-							new Date(workspace.startDate) <=
+							new Date(workplace.startDate) <=
 							new Date(endDate));
 				return workingTillNow || worked;
 			});
 			if (dateChecking) {
 				setDateError(
-					"You should have only one workspace during the same period"
+					"You should have only one workplace during the same period"
 				);
 				return;
 			}
 		}
-		dispatch(setNewWorkspaceStart());
-		const workspaceData = {
+		dispatch(setNewWorkplaceStart());
+		const workplaceData = {
 			startDate: startDate.toString(),
 			country,
 			company,
 		};
 		if (endDate) {
-			workspaceData.endDate = endDate?.toString();
+			workplaceData.endDate = endDate?.toString();
 		}
-		dispatch(setNewWorkspace(workspaceData, id));
+		dispatch(setNewWorkplace(workplaceData, id));
 		setTimeout(() => {
 			closeAccordion();
-			dispatch(resetWorkspaceStatus());
+			dispatch(resetWorkplaceStatus());
 		}, 5000);
+	}
+
+	let workplaceStatusText;
+
+	if (workplaceStatus === "successful") {
+		workplaceStatusText = "New workbook has been successfully created";
+	} else if (workplaceStatus === "failed") {
+		workplaceStatusText = "Something went wrong! Please try again later";
 	}
 
 	const isButtonDisabled = company === "" || country === "";
 
-	if (workspaceStatus) {
-		return <RequestResult status={workspaceStatus} name="workspace" />;
+	if (workplaceStatus) {
+		return (
+			<RequestResult status={workplaceStatus} text={workplaceStatusText} />
+		);
 	} else {
 		return (
 			<form className="forms" onSubmit={handleSubmit}>
@@ -114,7 +125,7 @@ function WorkspaceForm({ id, closeAccordion, workspaces }) {
 						searchPlaceholder="Search for a country"
 						selected={country}
 						onSelect={handleSelectCountry}
-						className={styles.workspaces__flagSelect}
+						className={styles.workplaces__flagSelect}
 					/>
 				</div>
 				<Button
@@ -128,10 +139,10 @@ function WorkspaceForm({ id, closeAccordion, workspaces }) {
 	}
 }
 
-WorkspaceForm.propTypes = {
+WorkplaceForm.propTypes = {
 	id: PropTypes.string,
 	closeAccordion: PropTypes.func,
-	workspaces: PropTypes.objectOf(
+	workplaces: PropTypes.objectOf(
 		PropTypes.shape({
 			country: PropTypes.string,
 			company: PropTypes.string,
@@ -141,4 +152,4 @@ WorkspaceForm.propTypes = {
 	),
 };
 
-export default WorkspaceForm;
+export default WorkplaceForm;
