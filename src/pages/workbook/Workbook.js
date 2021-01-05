@@ -1,37 +1,40 @@
 import PropTypes from "prop-types";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import WorkbookTable from "../../components/workbook/WorkbookTable";
+import Accordion from "../../components/accordion";
+import Workspaces from "../../components/workspace/Workspaces";
+import Table from "../../components/table";
 import styles from "./workbook.module.scss";
 
-function Workbook({ workbook }) {
-	const { firstName, lastName, ...workbookRest } = workbook;
+function Workbook({ workbook, workbookID }) {
+	const {
+		firstName,
+		lastName,
+		Workspaces: workbookWorkspaces,
+		...workbookRest
+	} = workbook;
+
+	const tableData = {
+		...workbookRest,
+		birthDate: new Date(workbookRest.birthDate).toDateString().slice(4),
+	};
 
 	return (
 		<div className={styles.workbook}>
-			<Accordion className={styles.workbooks__accordion}>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel1a-content"
-					id="panel1a-header"
-				>
-					<Typography>
-						{firstName} {lastName}
-					</Typography>
-				</AccordionSummary>
-				<AccordionDetails className={styles.workbook__accordionDetails}>
-					<WorkbookTable data={workbookRest} />
-				</AccordionDetails>
+			<Accordion rowName={`${firstName} ${lastName}`} fullWidth>
+				<Table tableData={tableData} />
+				<Workspaces id={workbookID} workspaces={workbookWorkspaces} />
 			</Accordion>
 		</div>
 	);
 }
 
 Workbook.propTypes = {
-	workbook: PropTypes.objectOf(PropTypes.string),
+	workbook: PropTypes.shape({
+		birthDate: PropTypes.string,
+		email: PropTypes.string,
+		passport: PropTypes.string,
+		Workspaces: PropTypes.object,
+	}),
+	workbookID: PropTypes.string,
 };
 
 export default Workbook;

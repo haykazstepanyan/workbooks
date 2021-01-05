@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import {
 	setNewWorkbookStart,
 	setNewWorkbook,
 	resetWorkbookStatus,
 } from "../../redux/workbook/actionCreators";
+import { selectWorkbookStatus } from "../../redux/workbook/selectors";
 import "react-datepicker/dist/react-datepicker.css";
-import WorkbookResult from "./WorkbookResult";
+import RequestResult from "../requestResult";
 import { Input, Button, Calendar } from "../inputs";
 
 function WorkbookForm({ closeAccordion, workbooks }) {
@@ -21,25 +23,26 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 
 	const dispatch = useDispatch();
 
-	const workbookStatus = useSelector((state) => state.workbook.workbookStatus);
+	const workbookStatus = useSelector(selectWorkbookStatus);
 
-	function handleFirstNameChange(e) {
+	const handleFirstNameChange = useCallback((e) => {
 		let value = e.target.value;
 		setFirstName(value.replace(/[^A-Za-z]/gi, ""));
-	}
-	function handleLastNameChange(e) {
+	}, []);
+
+	const handleLastNameChange = useCallback((e) => {
 		let value = e.target.value;
 		setLastName(value.replace(/[^A-Za-z]/gi, ""));
-	}
-	function handlePassportChange(e) {
+	}, []);
+	const handlePassportChange = useCallback((e) => {
 		setPassport(e.target.value);
-	}
-	function handleDateChange(date) {
+	}, []);
+	const handleDateChange = useCallback((date) => {
 		setBirthDate(date);
-	}
-	function handleEmailChange(e) {
+	}, []);
+	const handleEmailChange = useCallback((e) => {
 		setEmail(e.target.value);
-	}
+	}, []);
 
 	function handleFormSubmit(e) {
 		e.preventDefault();
@@ -59,8 +62,8 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 			firstName,
 			lastName,
 			passport,
-			email: email.toLocaleLowerCase(),
-			birthDate,
+			email: email.toLowerCase(),
+			birthDate: birthDate.toString(),
 		};
 		dispatch(setNewWorkbook(workBookData));
 		setTimeout(() => {
@@ -70,7 +73,7 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 	}
 
 	function checkEmail() {
-		setEmailError(false);
+		setEmailError("");
 		let mailFormat = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 		return email.match(mailFormat);
 	}
@@ -83,7 +86,7 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 	}
 	function checkIsUnique() {
 		let isUnique = true;
-		setEmailError(false);
+		setEmailError("");
 		setPassportError(false);
 		if (workbooks) {
 			Object.values(workbooks).map((workbook) => {
@@ -105,7 +108,7 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 		firstName === "" || lastName === "" || passport === "" || email === "";
 
 	if (workbookStatus) {
-		return <WorkbookResult status={workbookStatus} />;
+		return <RequestResult status={workbookStatus} name="workbook" />;
 	} else {
 		return (
 			<form className="forms" onSubmit={handleFormSubmit}>
@@ -137,7 +140,7 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 					id="email"
 					value={email}
 					handleChange={handleEmailChange}
-					hasError={emailError}
+					hasError={Boolean(emailError)}
 					errorMessage={emailError}
 				/>
 				<Calendar
@@ -158,5 +161,15 @@ function WorkbookForm({ closeAccordion, workbooks }) {
 		);
 	}
 }
+
+WorkbookForm.propTypes = {
+	closeAccordion: PropTypes.func,
+	workbooks: PropTypes.shape({
+		birthDate: PropTypes.string,
+		email: PropTypes.string,
+		passport: PropTypes.string,
+		Workspaces: PropTypes.object,
+	}),
+};
 
 export default WorkbookForm;

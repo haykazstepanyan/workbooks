@@ -6,7 +6,7 @@ import { getWorkbooks } from "../../redux/workbook/actionCreators";
 import { selectUserData } from "../../redux/auth/selectors";
 import { selectWorkbooks } from "../../redux/workbook/selectors";
 import Navbar from "../../components/navbar";
-import AddNewWorkbook from "../../components/workbook/AddNewWorkbook";
+import { AddNewWorkbook } from "../../components/workbook";
 import Workbook from "./Workbook";
 import Loader from "../../components/loader";
 import styles from "./workbook.module.scss";
@@ -26,16 +26,20 @@ function Workbooks() {
 		history.push("/login");
 		return null;
 	} else if (userData?.status === "pending") {
-		return <Loader />;
+		return (
+			<div className={styles.loaderBox}>
+				<Loader />
+			</div>
+		);
 	} else {
 		return (
 			<>
-				<Navbar userType={userData?.user?.type} />
+				<Navbar userType={userData?.type} />
 				<div className={styles.workbooks}>
 					<AddNewWorkbook workbooks={workbooks} />
 					<div className={styles.workbooks__box}>
-						{Object.values(workbooks).map((workbook) => (
-							<Workbook workbook={workbook} key={workbook.email} />
+						{Object.entries(workbooks).map(([key, value]) => (
+							<Workbook workbookID={key} workbook={value} key={key} />
 						))}
 					</div>
 				</div>

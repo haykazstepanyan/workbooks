@@ -2,13 +2,13 @@
 	display: flex;
 	flex-direction: column-reverse;
 	margin-bottom: 15px;
+	&__errorText {
+		color: red;
+		font-style: italic;
+		font-size: 12px;
+		padding-left: 15px;
+	}
 	&_errors {
-		span {
-			color: red;
-			font-style: italic;
-			font-size: 12px;
-			padding-left: 15px;
-		}
 		input {
 			border: 1px solid red;
 		}

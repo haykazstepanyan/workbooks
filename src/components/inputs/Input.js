@@ -38,9 +38,9 @@ function Input(props) {
 Input.propTypes = {
 	type: PropTypes.string,
 	label: PropTypes.string,
-	value: PropTypes.string,
+	value: PropTypes.string.isRequired,
 	id: PropTypes.string,
-	handleChange: PropTypes.func,
+	handleChange: PropTypes.func.isRequired,
 	hasError: PropTypes.bool,
 	errorMessage: PropTypes.string,
 	autoComplete: PropTypes.string,

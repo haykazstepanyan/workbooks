@@ -11,7 +11,9 @@ function WrapperBox(props) {
 
 	return (
 		<div className={divClass}>
-			{hasError && <span>{errorMessage}</span>}
+			{hasError && (
+				<span className={styles.inputs__errorText}>{errorMessage}</span>
+			)}
 			{children}
 			<label htmlFor={id} className={styles.inputs__labels}>
 				{label}

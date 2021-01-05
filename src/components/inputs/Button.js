@@ -36,7 +36,7 @@ function Button(props) {
 
 Button.propTypes = {
 	type: PropTypes.string,
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 	handleClick: PropTypes.func,
 	disabled: PropTypes.bool,
 	rightAlign: PropTypes.bool,

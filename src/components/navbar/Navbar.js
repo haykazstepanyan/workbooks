@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "../inputs";
 import styles from "./navbar.module.scss";
 
-function Navbar({ type }) {
+function Navbar({ userType }) {
 	const dispatch = useDispatch();
 	function handleLogout() {
 		dispatch(userLogout());
@@ -16,7 +16,7 @@ function Navbar({ type }) {
 		<AppBar position="static" className={styles.workbookNavbar}>
 			<Toolbar>
 				<Typography variant="h6" className={styles.workbookNavbar__menu}>
-					Hello {type}
+					Hello {userType}
 				</Typography>
 				<Button text="Logout" handleClick={handleLogout} isTransparent />
 			</Toolbar>
@@ -25,7 +25,7 @@ function Navbar({ type }) {
 }
 
 Navbar.propTypes = {
-	type: PropTypes.string,
+	userType: PropTypes.string,
 };
 
 export default Navbar;

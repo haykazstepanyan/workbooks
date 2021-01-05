@@ -36,7 +36,7 @@ function Calendar(props) {
 
 Calendar.propTypes = {
 	selectedDate: PropTypes.instanceOf(Date),
-	handleChange: PropTypes.func,
+	handleChange: PropTypes.func.isRequired,
 	id: PropTypes.string,
 	label: PropTypes.string,
 	hasError: PropTypes.bool,
