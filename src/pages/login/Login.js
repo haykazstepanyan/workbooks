@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { userSignIn } from "../../redux/auth/actionCreators";
+import { getCurrentUser, userSignIn } from "../../redux/auth/actionCreators";
 import { selectUserData, selectAuthError } from "../../redux/auth/selectors";
 import { Input, Button } from "../../components/inputs";
 import styles from "./login.module.scss";
+import Loader from "../../components/loader";
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -19,6 +20,10 @@ function Login() {
 	const history = useHistory();
 	const userData = useSelector(selectUserData);
 	const authError = useSelector(selectAuthError);
+
+	useEffect(() => {
+		dispatch(getCurrentUser());
+	}, [dispatch]);
 
 	useEffect(() => {
 		if (authError) {
@@ -61,6 +66,12 @@ function Login() {
 	if (userData?.id) {
 		history.push("/");
 		return null;
+	} else if (userData?.status === "pending") {
+		return (
+			<div className="page-center-loader">
+				<Loader />
+			</div>
+		);
 	} else {
 		return (
 			<div className={styles.login} data-testid="login">

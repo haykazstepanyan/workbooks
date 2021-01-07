@@ -16,5 +16,5 @@
 .page-center-loader {
 	display: flex;
 	justify-content: center;
-	margin-top: calc((100vh - 80px) / 2);
+	margin-top: calc((100vh - 11em) / 2);
 }
