@@ -105,7 +105,7 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 		workplaceStatusText = "Something went wrong! Please try again later";
 	}
 
-	const isButtonDisabled = company === "" || country === "" || startDate === "";
+	const isButtonDisabled = company === "" || country === "" || !startDate;
 
 	if (workplaceStatus) {
 		return (

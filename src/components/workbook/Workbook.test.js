@@ -3,7 +3,7 @@ import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import { WorkbookForm } from "./";
 
-describe("WorkbookForm components", () => {
+describe("WorkbookForm component", () => {
 	const mockStore = configureStore();
 	const store = mockStore({
 		workbook: {},
