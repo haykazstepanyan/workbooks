@@ -33,6 +33,7 @@ function Button(props) {
 				onClick={handleClick}
 				className={buttonClass}
 				disabled={disabled}
+				data-testid="button"
 			>
 				{text}
 			</button>

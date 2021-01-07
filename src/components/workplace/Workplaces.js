@@ -16,7 +16,7 @@ function Workplaces({ workbookID, workplaces, user, workbookUserID }) {
 
 	return (
 		<>
-			<div className={divClass}>
+			<div className={divClass} data-testid="workplaces">
 				{canCreateNewWorkplace && (
 					<AddNewWorkplace id={workbookID} workplaces={workplaces} />
 				)}

@@ -16,7 +16,9 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 	const [company, setCompany] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState();
+	const [tillNow, setTillNow] = useState(false);
 	const [country, setCountry] = useState("");
+	const [isDateDisabled, setIsDateDisabled] = useState(false);
 	const [dateError, setDateError] = useState("");
 
 	const dispatch = useDispatch();
@@ -35,6 +37,14 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 	const handleSelectCountry = useCallback((countryCode) => {
 		setCountry(countryCode);
 	}, []);
+	const handleCheckbox = useCallback((e) => {
+		const { checked } = e?.target;
+		setTillNow(checked);
+		setIsDateDisabled(checked);
+		if (checked) {
+			setEndDate();
+		}
+	}, []);
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -46,19 +56,22 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 		if (workplaces) {
 			let dateChecking = Object.values(workplaces).some((workplace) => {
 				const workingTillNow =
-					(!workplace.endDate && !endDate) ||
-					(!workplace.endDate &&
+					(workplace.endDate === "Till now" && !endDate) ||
+					(workplace.endDate === "Till now" &&
 						new Date(workplace.startDate) <= new Date(endDate));
 				const worked =
-					workplace.endDate &&
-					(new Date(workplace.startDate) <=
-						new Date(startDate) <=
-						new Date(workplace.endDate) ||
-						new Date(startDate) <=
-							new Date(workplace.startDate) <=
-							new Date(endDate));
+					(new Date(workplace.startDate) <= new Date(startDate) &&
+						new Date(startDate) <= new Date(workplace.endDate)) ||
+					(new Date(workplace.startDate) <= new Date(endDate) &&
+						new Date(endDate) <= new Date(workplace.endDate)) ||
+					(new Date(startDate) <= new Date(workplace.startDate) &&
+						new Date(workplace.startDate) <= new Date(endDate)) ||
+					(new Date(startDate) <= new Date(workplace.endDate) &&
+						new Date(workplace.endDate) <= new Date(endDate));
+
 				return workingTillNow || worked;
 			});
+
 			if (dateChecking) {
 				setDateError(
 					"You should have only one workplace during the same period"
@@ -69,16 +82,18 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 		dispatch(setNewWorkplaceStart());
 		const workplaceData = {
 			startDate: startDate.toString(),
+			endDate: endDate ? endDate.toString() : "Till now",
 			country,
 			company,
 		};
-		if (endDate) {
-			workplaceData.endDate = endDate?.toString();
-		}
 		dispatch(setNewWorkplace(workplaceData, id));
 		setTimeout(() => {
 			closeAccordion();
 			dispatch(resetWorkplaceStatus());
+			setCompany("");
+			setCountry("");
+			setStartDate(new Date());
+			setEndDate();
 		}, 5000);
 	}
 
@@ -90,7 +105,7 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 		workplaceStatusText = "Something went wrong! Please try again later";
 	}
 
-	const isButtonDisabled = company === "" || country === "";
+	const isButtonDisabled = company === "" || country === "" || startDate === "";
 
 	if (workplaceStatus) {
 		return (
@@ -118,6 +133,16 @@ function WorkplaceForm({ id, closeAccordion, workplaces }) {
 					handleChange={handleEndDateChange}
 					hasError={Boolean(dateError)}
 					errorMessage={dateError}
+					zeroMargin
+					isDisabled={isDateDisabled}
+				/>
+				<Input
+					type="checkbox"
+					value=""
+					checked={tillNow}
+					handleChange={handleCheckbox}
+					label="Working till now"
+					rowFlex
 				/>
 				<div>
 					<ReactFlagsSelect

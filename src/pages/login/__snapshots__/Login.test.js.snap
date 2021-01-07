@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`workplace folder components should match component snapshot 1`] = `
+<div
+  class="login"
+  data-testid="login"
+>
+  <form
+    autocomplete="off"
+    class="login__form"
+    novalidate=""
+  >
+    <div
+      class="inputs"
+      data-testid="wrapper-box"
+    >
+      <input
+        class="inputs__field"
+        data-testid="input"
+        id="email"
+        type="email"
+        value=""
+      />
+      <label
+        class="inputs__labels"
+        data-testid="label"
+        for="email"
+      >
+        Email
+      </label>
+    </div>
+    <div
+      class="inputs"
+      data-testid="wrapper-box"
+    >
+      <input
+        autocomplete="on"
+        class="inputs__field"
+        data-testid="input"
+        id="password"
+        type="password"
+        value=""
+      />
+      <label
+        class="inputs__labels"
+        data-testid="label"
+        for="password"
+      >
+        Password
+      </label>
+    </div>
+    
+    <div
+      class="buttons_centerAlign"
+    >
+      <button
+        class="buttons"
+        data-testid="button"
+        disabled=""
+        type="submit"
+      >
+        Sign in
+      </button>
+    </div>
+  </form>
+</div>
+`;

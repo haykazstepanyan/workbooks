@@ -72,6 +72,11 @@ function WorkbookForm({ closeAccordion, workbooks, user }) {
 		setTimeout(() => {
 			closeAccordion();
 			dispatch(resetWorkbookStatus());
+			setFirstName("");
+			setLastName("");
+			setPassport("");
+			setEmail("");
+			setBirthDate(new Date());
 		}, 5000);
 	}
 
@@ -122,7 +127,11 @@ function WorkbookForm({ closeAccordion, workbooks, user }) {
 		return <RequestResult status={workbookStatus} text={workbookStatusText} />;
 	} else {
 		return (
-			<form className="forms" onSubmit={handleFormSubmit}>
+			<form
+				className="forms"
+				onSubmit={handleFormSubmit}
+				data-testid="workbook-form"
+			>
 				<Input
 					label="First Name"
 					id="firstName"

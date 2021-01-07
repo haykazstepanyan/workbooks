@@ -47,7 +47,7 @@ function Workbooks() {
 		return (
 			<>
 				<Navbar userType={userData?.type} />
-				<div className={styles.workbooks}>
+				<div className={styles.workbooks} data-testid="workbooks">
 					<AddNewWorkbook workbooks={workbooks} user={userData} />
 					<div className={styles.workbooks__box}>
 						{deleteStatus && (

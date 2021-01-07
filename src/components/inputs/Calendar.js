@@ -11,14 +11,16 @@ function Calendar(props) {
 		label,
 		hasError,
 		errorMessage,
+		zeroMargin,
+		isDisabled,
 	} = props;
-
 	return (
 		<WrapperBox
 			id={id}
 			label={label}
 			hasError={hasError}
 			errorMessage={errorMessage}
+			zeroMargin={zeroMargin}
 		>
 			<DatePicker
 				selected={selectedDate}
@@ -29,6 +31,7 @@ function Calendar(props) {
 				dateFormatCalendar="MMMM"
 				yearDropdownItemNumber={15}
 				className={styles.inputs__field}
+				disabled={isDisabled}
 			/>
 		</WrapperBox>
 	);
@@ -41,6 +44,8 @@ Calendar.propTypes = {
 	label: PropTypes.string,
 	hasError: PropTypes.bool,
 	errorMessage: PropTypes.string,
+	zeroMargin: PropTypes.bool,
+	isDisabled: PropTypes.bool,
 };
 
 export default Calendar;

@@ -7,7 +7,7 @@ import styles from "./requestResult.module.scss";
 function RequestResult({ status, text }) {
 	function renderResult() {
 		if (status === "pending") {
-			return <Loader />;
+			return <Loader data-testid="loader" />;
 		} else if (status === "successful") {
 			return (
 				<>
@@ -28,7 +28,7 @@ function RequestResult({ status, text }) {
 }
 
 RequestResult.propTypes = {
-	status: PropTypes.string,
+	status: PropTypes.string.isRequired,
 	text: PropTypes.string,
 };
 

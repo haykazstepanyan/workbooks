@@ -15,7 +15,11 @@ function Navbar({ userType }) {
 	return (
 		<AppBar position="static" className={styles.workbookNavbar}>
 			<Toolbar>
-				<Typography variant="h6" className={styles.workbookNavbar__menu}>
+				<Typography
+					variant="h6"
+					className={styles.workbookNavbar__menu}
+					data-testid="navbar"
+				>
 					Hello {userType}
 				</Typography>
 				<Button text="Logout" handleClick={handleLogout} isTransparent />

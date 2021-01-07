@@ -9,7 +9,7 @@ import Accordion from "../accordion";
 import Table from "../table";
 import styles from "./workplaces.module.scss";
 
-function Workplace({ workplaceID, workbookID, workplace, canDelete }) {
+function Workplace({ workplaceID, workbookID, workplace = {}, canDelete }) {
 	const { company, ...workplaceRest } = workplace;
 
 	const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Workplace({ workplaceID, workbookID, workplace, canDelete }) {
 		startDate: new Date(workplaceRest.startDate).toDateString().slice(4),
 	};
 
-	if (workplaceRest.endDate) {
+	if (workplaceRest.endDate !== "Till now") {
 		tableData.endDate = new Date(workplaceRest.endDate).toDateString().slice(4);
 	}
 
@@ -31,7 +31,7 @@ function Workplace({ workplaceID, workbookID, workplace, canDelete }) {
 	}, [dispatch, workplaceID, workbookID]);
 
 	return (
-		<div className={styles.workplace}>
+		<div className={styles.workplace} data-testid="workplace">
 			<Accordion
 				rowName={workplace.company}
 				fullWidth

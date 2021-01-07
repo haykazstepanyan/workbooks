@@ -35,6 +35,20 @@
 			}
 		}
 	}
+	&_directionRow {
+		flex-direction: row;
+		align-items: center;
+		padding: 5px 0 0 15px;
+		input {
+			height: auto;
+		}
+		label {
+			padding: 0 0 0 10px;
+		}
+	}
+	&_zeroMargin {
+		margin: 0;
+	}
 }
 .buttons {
 	padding: 10px 25px;

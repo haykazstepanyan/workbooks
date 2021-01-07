@@ -3,7 +3,7 @@ import styles from "./table.module.scss";
 
 function Table({ tableData = {} }) {
 	return (
-		<ul className={styles.table}>
+		<ul className={styles.table} data-testid="table">
 			{Object.entries(tableData).map(([key, value]) => (
 				<li key={key}>
 					<span>{key}:</span>

@@ -13,6 +13,8 @@ function Input(props) {
 		errorMessage,
 		autoComplete,
 		pattern = null,
+		checked,
+		rowFlex,
 	} = props;
 
 	return (
@@ -21,6 +23,7 @@ function Input(props) {
 			label={label}
 			hasError={hasError}
 			errorMessage={errorMessage}
+			rowFlex={rowFlex}
 		>
 			<input
 				type={type}
@@ -30,6 +33,8 @@ function Input(props) {
 				className={styles.inputs__field}
 				autoComplete={autoComplete}
 				pattern={pattern}
+				data-testid="input"
+				checked={checked}
 			/>
 		</WrapperBox>
 	);
@@ -45,6 +50,8 @@ Input.propTypes = {
 	errorMessage: PropTypes.string,
 	autoComplete: PropTypes.string,
 	pattern: PropTypes.string,
+	checked: PropTypes.bool,
+	rowFlex: PropTypes.bool,
 };
 
 export default Input;

@@ -39,7 +39,7 @@ function Workbook({ workbook, workbookID, user }) {
 	}, [dispatch, workbookID]);
 
 	return (
-		<div className={styles.workbook}>
+		<div className={styles.workbook} data-testid="workbook">
 			<Accordion
 				rowName={`${firstName} ${lastName}`}
 				fullWidth

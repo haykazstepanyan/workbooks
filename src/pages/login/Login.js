@@ -63,7 +63,7 @@ function Login() {
 		return null;
 	} else {
 		return (
-			<div className={styles.login}>
+			<div className={styles.login} data-testid="login">
 				<form
 					onSubmit={handleSubmit}
 					noValidate

@@ -20,6 +20,7 @@ function AddNewWorkbook({ workbooks, user }) {
 				isExpanded={accordionState}
 				changeHandler={handleExpand}
 				rowName="+ Add new workbook"
+				data-testid="add-new-workbook"
 			>
 				<WorkbookForm
 					closeAccordion={closeAccordion}

@@ -1,0 +1,504 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`workbook pages components Workbook component should match Workbook component snapshot 1`] = `
+<div
+  class="workbook"
+  data-testid="workbook"
+>
+  <div
+    class="MuiPaper-root MuiAccordion-root accordion accordion__fullWidth MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      aria-controls="panel1a-content"
+      aria-disabled="false"
+      aria-expanded="false"
+      class="MuiButtonBase-root MuiAccordionSummary-root accordion__content"
+      id="panel1a-header"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="MuiAccordionSummary-content"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          undefined undefined
+        </p>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root accordion__deleteIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          />
+        </svg>
+      </div>
+      <div
+        aria-disabled="false"
+        aria-hidden="true"
+        class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiCollapse-container MuiCollapse-hidden"
+      style="min-height: 0px;"
+    >
+      <div
+        class="MuiCollapse-wrapper"
+      >
+        <div
+          class="MuiCollapse-wrapperInner"
+        >
+          <div
+            aria-labelledby="panel1a-header"
+            id="panel1a-content"
+            role="region"
+          >
+            <div
+              class="MuiAccordionDetails-root accordion__details"
+            >
+              <ul
+                class="table"
+                data-testid="table"
+              >
+                <li>
+                  <span>
+                    birthDate
+                    :
+                  </span>
+                  <span>
+                    lid Date
+                  </span>
+                </li>
+              </ul>
+              <div
+                class=""
+                data-testid="workplaces"
+              >
+                <div
+                  class="MuiPaper-root MuiAccordion-root accordion MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                >
+                  <div
+                    aria-controls="panel1a-content"
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    class="MuiButtonBase-root MuiAccordionSummary-root accordion__content"
+                    id="panel1a-header"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiAccordionSummary-content"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        + Add new workplace
+                      </p>
+                    </div>
+                    <div
+                      aria-disabled="false"
+                      aria-hidden="true"
+                      class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="MuiCollapse-container MuiCollapse-hidden"
+                    style="min-height: 0px;"
+                  >
+                    <div
+                      class="MuiCollapse-wrapper"
+                    >
+                      <div
+                        class="MuiCollapse-wrapperInner"
+                      >
+                        <div
+                          aria-labelledby="panel1a-header"
+                          id="panel1a-content"
+                          role="region"
+                        >
+                          <div
+                            class="MuiAccordionDetails-root accordion__details"
+                          >
+                            <form
+                              class="forms"
+                            >
+                              <div
+                                class="inputs"
+                                data-testid="wrapper-box"
+                              >
+                                <input
+                                  class="inputs__field"
+                                  data-testid="input"
+                                  id="company"
+                                  type="text"
+                                  value=""
+                                />
+                                <label
+                                  class="inputs__labels"
+                                  data-testid="label"
+                                  for="company"
+                                >
+                                  Company
+                                </label>
+                              </div>
+                              <div
+                                class="inputs"
+                                data-testid="wrapper-box"
+                              >
+                                <div
+                                  class="react-datepicker-wrapper"
+                                >
+                                  <div
+                                    class="react-datepicker__input-container"
+                                  >
+                                    <input
+                                      class="inputs__field"
+                                      id="startDate"
+                                      type="text"
+                                      value="01/07/2021"
+                                    />
+                                  </div>
+                                </div>
+                                <label
+                                  class="inputs__labels"
+                                  data-testid="label"
+                                  for="startDate"
+                                >
+                                  Start date
+                                </label>
+                              </div>
+                              <div
+                                class="inputs inputs_zeroMargin"
+                                data-testid="wrapper-box"
+                              >
+                                <div
+                                  class="react-datepicker-wrapper"
+                                >
+                                  <div
+                                    class="react-datepicker__input-container"
+                                  >
+                                    <input
+                                      class="inputs__field"
+                                      id="endDate"
+                                      type="text"
+                                      value=""
+                                    />
+                                  </div>
+                                </div>
+                                <label
+                                  class="inputs__labels"
+                                  data-testid="label"
+                                  for="endDate"
+                                >
+                                  End date
+                                </label>
+                              </div>
+                              <div
+                                class="inputs inputs_directionRow"
+                                data-testid="wrapper-box"
+                              >
+                                <input
+                                  class="inputs__field"
+                                  data-testid="input"
+                                  type="checkbox"
+                                  value=""
+                                />
+                                <label
+                                  class="inputs__labels"
+                                  data-testid="label"
+                                >
+                                  Working till now
+                                </label>
+                              </div>
+                              <div>
+                                <div
+                                  class="ReactFlagsSelect-module_flagsSelect__2pfa2 workplaces__flagSelect"
+                                >
+                                  <button
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-labelledby="rfs_btn"
+                                    class="ReactFlagsSelect-module_selectBtn__19wW7"
+                                    id="rfs_btn"
+                                    style="font-size: 16px;"
+                                    type="button"
+                                  >
+                                    <span
+                                      class="ReactFlagsSelect-module_selectValue__152eS"
+                                    >
+                                      Select a country
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                              <div
+                                class="buttons_rightAlign"
+                              >
+                                <button
+                                  class="buttons"
+                                  data-testid="button"
+                                  disabled=""
+                                  type="submit"
+                                >
+                                  Add
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`workbook pages components Workbooks component should match Workbooks component snapshot 1`] = `
+<div
+  class="workbooks"
+  data-testid="workbooks"
+>
+  <div>
+    <div
+      class="MuiPaper-root MuiAccordion-root accordion MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-controls="panel1a-content"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root accordion__content"
+        id="panel1a-header"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            + Add new workbook
+          </p>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-hidden="true"
+          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-container MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              aria-labelledby="panel1a-header"
+              id="panel1a-content"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root accordion__details"
+              >
+                <form
+                  class="forms"
+                  data-testid="workbook-form"
+                >
+                  <div
+                    class="inputs"
+                    data-testid="wrapper-box"
+                  >
+                    <input
+                      class="inputs__field"
+                      data-testid="input"
+                      id="firstName"
+                      pattern="[a-zA-Z]+"
+                      type="text"
+                      value=""
+                    />
+                    <label
+                      class="inputs__labels"
+                      data-testid="label"
+                      for="firstName"
+                    >
+                      First Name
+                    </label>
+                  </div>
+                  <div
+                    class="inputs"
+                    data-testid="wrapper-box"
+                  >
+                    <input
+                      class="inputs__field"
+                      data-testid="input"
+                      id="lastName"
+                      pattern="[a-zA-Z]+"
+                      type="text"
+                      value=""
+                    />
+                    <label
+                      class="inputs__labels"
+                      data-testid="label"
+                      for="lastName"
+                    >
+                      Last Name
+                    </label>
+                  </div>
+                  <div
+                    class="inputs"
+                    data-testid="wrapper-box"
+                  >
+                    <input
+                      class="inputs__field"
+                      data-testid="input"
+                      id="passport"
+                      type="text"
+                      value=""
+                    />
+                    <label
+                      class="inputs__labels"
+                      data-testid="label"
+                      for="passport"
+                    >
+                      Passport
+                    </label>
+                  </div>
+                  <div
+                    class="inputs"
+                    data-testid="wrapper-box"
+                  >
+                    <input
+                      class="inputs__field"
+                      data-testid="input"
+                      id="email"
+                      type="email"
+                      value=""
+                    />
+                    <label
+                      class="inputs__labels"
+                      data-testid="label"
+                      for="email"
+                    >
+                      Email
+                    </label>
+                  </div>
+                  <div
+                    class="inputs"
+                    data-testid="wrapper-box"
+                  >
+                    <div
+                      class="react-datepicker-wrapper"
+                    >
+                      <div
+                        class="react-datepicker__input-container"
+                      >
+                        <input
+                          class="inputs__field"
+                          id="birthDate"
+                          type="text"
+                          value="01/07/2021"
+                        />
+                      </div>
+                    </div>
+                    <label
+                      class="inputs__labels"
+                      data-testid="label"
+                      for="birthDate"
+                    >
+                      Birth date
+                    </label>
+                  </div>
+                  <div
+                    class="buttons_rightAlign"
+                  >
+                    <button
+                      class="buttons"
+                      data-testid="button"
+                      disabled=""
+                      type="submit"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="workbooks__box"
+  />
+</div>
+`;
